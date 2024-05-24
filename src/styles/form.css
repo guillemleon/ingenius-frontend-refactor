@@ -1,0 +1,290 @@
+/* SIDEPANEL FORM */
+
+.sidepanel-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--m5);
+  padding-top: 30px;
+}
+
+.form-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input.disabled {
+  background-color: var(--gray);
+}
+
+.form-input {
+  width: 100%;
+  min-height: 40px;
+  padding: 10px;
+  background-color: var(--white);
+  border-radius: var(--r2);
+  border: 1px solid var(--gray2);
+  font-family: "InterRegular";
+  font-size: 14px;
+}
+
+.select-input {
+  width: 100%;
+  min-height: 40px;
+  padding: var(--m2) var(--m3);
+  background-color: var(--white);
+  border-radius: var(--r2);
+  border: none;
+  font-family: "InterRegular";
+  font-size: 14px;
+}
+
+.select-wrap {
+  border: 1px solid var(--gray2);
+  border-radius: var(--r2);
+  padding-right: 6px;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--gray5);
+}
+
+.form-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 8px 10px;
+  background-color: var(--white);
+  border-radius: var(--r2);
+  border: 1px solid;
+  border: 1px solid var(--gray2);
+  font-family: "InterRegular";
+  font-size: 14px;
+  resize: none;
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+.error-message {
+  font-family: "InterRegular";
+  font-size: 12px;
+  margin-top: 4px;
+  color: var(--red);
+}
+
+.upload-image-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--m3);
+  gap: var(--m4);
+  border: 1px dashed var(--gray3);
+  border-radius: var(--r2);
+}
+
+.upload-image {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.upload-image img {
+  min-width: 100%; 
+  min-height: 100%; 
+  object-fit: cover; 
+}
+
+.custom-image-upload {
+  display: flex;
+  width: 40%;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 30px;
+  cursor: pointer;
+  background-color: var(--linen);
+  border: none;
+  border-radius: var(--r3);
+  text-align: center;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  height: 42px;
+  font-family: "InterRegular";
+  margin-right: 10%;
+}
+
+.custom-image-upload:hover {
+  background-color: var(--light-orange);
+}
+
+.upload-files-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: var(--m3);
+  gap: var(--m4);
+  border: 1px dashed var(--gray3);
+  border-radius: var(--r2);
+  margin-bottom: 10px;
+}
+
+.custom-file-upload {
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+  min-width: max-content;
+  cursor: pointer;
+  background-color: var(--linen);
+  border: none;
+  border-radius: var(--r3);
+  text-align: center;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  height: 42px;
+  font-family: "InterRegular";
+}
+
+.settings-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.settings-page .sidepanel-form {
+  padding-top: 0;
+}
+
+.settings-page ul {
+  padding-left: 10px;
+  margin: 0;
+}
+
+.ticket-files {
+  font-family: "InterRegular";
+  font-size: 14px;
+  list-style-type: none;
+  display: flex;
+  gap: var(--m2);
+  align-items: center;
+  padding: 4px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--m2);
+  width: 100%;
+  max-width: 600px;
+  padding: var(--m5);
+  background-color: white;
+  border-radius: var(--r5);
+  padding: var(--m7);
+  border: 0.5px solid var(--gray3);
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.05);
+}
+
+/* React Calendar */
+
+.react-calendar {
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+  color: var(--dark) !important;
+  text-decoration: none !important;
+  width: 326px !important;
+  max-width: 100% !important;
+  padding: 20px !important;
+  background: white !important;
+  border: var(--border) !important;
+  text-transform: capitalize !important;
+  border-radius: 6px !important;
+  border: white;
+  box-shadow: var(--sh-box);
+  z-index: 100;
+}
+
+.react-calendar__navigation__label__labelText {
+opacity: 1 !important;
+}
+
+abbr:where([title]) {
+  -webkit-text-decoration: none !important;
+  text-decoration: none !important;
+  font-size: var(--text-ss) !important;
+  font-weight: 500 !important;
+  line-height: 24px !important;
+  color: var(--main) !important;
+  text-transform: capitalize !important;
+}
+
+.react-calendar__navigation button {
+  color: var(--dark) !important;
+  min-width: auto !important;
+  background: none !important;
+  margin-top: 0px !important;
+  background-color: white !important;
+  color: var(dark) !important;
+  font-size: 16px !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  line-height: 24px !important;
+  opacity: 0.8 !important;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: white !important;
+}
+.react-calendar__navigation button[disabled] {
+  background-color: white !important;
+}
+
+.react-calendar__tile:disabled {
+  background-color: white !important;
+}
+
+.react-calendar__tile--now {
+  background: white !important;
+  color: var(--dark) !important;}
+
+.react-calendar__month-view__days__day--weekend {
+  color: var(--dark) !important;
+  text-transform: capitalize !important;
+}
+
+.react-calendar__navigation__next2-button {
+  display: none !important;
+}
+
+.react-calendar__navigation__prev2-button {
+  display: none !important;
+}
+
+.react-calendar__navigation__arrow[disabled] img {
+  opacity: 0.5;
+}
+
+.react-calendar__tile:hover {
+  background-color: var(--grey1) !important;
+  border-radius: var(--r3);
+}
+
+.react-calendar__tile--active {
+  border-radius: 4px !important;
+  border: 1px solid var(--main) !important;
+  background: #f0f0ff !important;
+  color: var(--main)!important;
+  width: 42px !important;
+  height: 42px !important;
+  padding: 9px !important;
+  font-weight: 600 !important;
+}

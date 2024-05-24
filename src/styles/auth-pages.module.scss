@@ -1,0 +1,56 @@
+@import './variables.scss';
+
+.container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    min-height: calc(100vh - 80px);
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    min-height: calc(100vh - 80px);
+    background-color: $orange;
+}
+
+.title {
+    color: white;
+    font-size: 40px;
+    font-family: 'InterBlack', sans-serif;
+}
+
+@media (max-width: $mobile) {
+    .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .titleContainer {
+        width: 100%;
+        min-height: fit-content;
+        padding: 20px 0;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .formContainer {
+        width: 100%;
+        height: fit-content;
+        align-items: flex-start;
+        padding-top: 50px;
+    }
+}

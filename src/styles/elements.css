@@ -1,0 +1,374 @@
+/* ELEMENTS */
+
+/* Button Group */
+
+.button-group {
+  display: flex;
+  align-items: center;
+  gap: var(--m3);
+}
+
+/* Button */
+
+button {
+  outline: none !important;
+  border: none;
+  background: transparent;
+}
+
+button:active,
+button:hover,
+button:focus,
+a:active,
+a:focus,
+a:hover {
+  cursor: pointer;
+}
+
+button[disabled] {
+  cursor: auto;
+}
+
+/* Button Extensions */
+
+.center-btn {
+  display: flex;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+/* Primary Button */
+
+.app-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  max-width: fit-content;
+  min-width: 100px;
+  height: 46px;
+  padding: 0 var(--m5);
+  border-radius: var(--r6);
+  gap: var(--m2);
+  background: var(--red);
+  font-family: "InterMedium";
+  font-size: 14px;
+  color: var(--white);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.app-button:hover {
+  background-color: var(--salmon);
+}
+
+/* .app-button button{
+  min-width: 140px;
+} */
+
+.app-button.small {
+  height: 28px;
+}
+
+.app-button.cream {
+  background-color: var(--cream);
+}
+
+.app-button.cream:hover {
+  filter: brightness(105%);
+}
+
+.app-button.orange {
+  background-color: var(--orange);
+}
+
+.app-button.orange:hover {
+  background-color: var(--yellow);
+  filter: none;
+
+}
+
+.reload-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--r6);
+  gap: var(--m2);
+  background: var(--orange);
+  font-family: "InterMedium";
+  font-size: 14px;
+  color: var(--white);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.reload-button:hover {
+  filter: brightness(115%);
+}
+
+/* Secondary Button */
+
+.sec-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: var(--r3);
+  color: black;
+  height: 42px;
+  font-family: "DMSansMedium";
+  font-size: 15px;
+  gap: var(--m2);
+  transition: all 0.3s ease;
+}
+
+.sec-tag {
+  font-family: "DMSansSemiBold";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: var(--r4);
+  color: black;
+  min-height: var(--btn-h);
+  gap: var(--m2);
+  font-size: 16px;
+}
+
+.sec-button:active img,
+.active-button img {
+  filter: invert();
+}
+
+.sec-button.orange {
+  background-color: var(--light-orange);
+}
+.sec-button.orange:hover {
+  background-color: var(--orange);
+}
+
+.sec-button.red {
+  background-color: var(--red);
+  color: white;
+}
+.sec-button.red:hover {
+  background-color: var(--salmon);
+}
+
+.sec-button.linen:hover {
+  background-color: var(--light-orange);
+}
+
+.sec-button.linen:active,
+.active-button {
+  background-color: var(--pink);
+  color: white;
+}
+
+.sec-button.stone:hover {
+  background-color: var(--salmon);
+}
+
+.sec-button.small {
+  min-height: 20px;
+  font-size: 12px;
+  font-family: "InterRegular";
+  width: fit-content;
+  padding: 0 10px;
+}
+
+/* Switch Button */
+
+.switch-box {
+  display: flex;
+  gap: var(--m2);
+}
+.switch-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  border: 1px solid var(--gray2);
+  border-radius: 8px;
+  box-shadow: var(--neoButtonThin);
+}
+
+.active-switch {
+  border: 0.5px solid var(--gray3);
+  background-color: var(--gray1);
+}
+
+.switch-button:hover {
+  border: 0.5px solid var(--gray3);
+  background-color: var(--gray);
+}
+
+.switch-button:hover {
+  background-color: var(--gray1);
+}
+
+/* Tags */
+
+.square-tag {
+  font-family: "InterRegular";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: var(--m2) var(--m4);
+  font-size: 13px;
+  border-radius: var(--r4);
+  gap: var(--m1);
+}
+
+/* background-color extensions: 
+green, blue, light-blue, ivory, pink */
+
+.round-tag {
+  font-family: "InterRegular";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: var(--m2) var(--m4);
+  font-size: 13px;
+  border-radius: var(--r5);
+  gap: var(--m1);
+}
+
+/* background-color extensions: 
+green, blue, light-blue, ivory, pink */
+
+.status-tag {
+  font-family: "DMSansRegular";
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: var(--m2) var(--m3);
+  font-size: 14px;
+  border-radius: var(--r5);
+  padding: var(--m1) var(--m3);
+  width: 100px;
+}
+
+/* Color extensions */
+.status-tag.green {
+  background-color: var(--green);
+  color: var(--darkgreen);
+}
+
+.status-tag.pink {
+  background-color: var(--pink);
+  color: var(--firebrick);
+}
+
+/* Input */
+
+input:focus {
+  outline: none;
+}
+
+.app-input {
+  width: 100%;
+  min-height: 38px;
+  padding: var(--m2) var(--m3);
+  background-color: var(--white);
+  border-radius: var(--r2);
+  border: 1px solid;
+  border: 1px solid var(--gray2);
+  font-family: "InterRegular";
+}
+
+.app-input.disabled {
+  background: var(--grey);
+}
+
+/* Search Input */
+
+.search-input {
+  width: 320px;
+  height: 46px;
+  padding: 0 38px;
+  background-color: var(--gray);
+  border-radius: 10px;
+  border: 1px solid var(--gray2);
+}
+
+.search-icon {
+  position: relative;
+  top: 4px;
+  left: 30px;
+  width: 14px;
+}
+
+/* Radio Button */
+
+.radiobutton {
+  cursor: pointer;
+  accent-color: var(--main);
+  width: 16px;
+  height: auto;
+}
+
+.axis-label {
+  letter-spacing: 0.24px !important;
+}
+
+/* Chechbox */
+
+.checkbox {
+  cursor: pointer;
+  background-color: var(--brown2);
+  accent-color: var(--brown2);
+  color: white;
+}
+
+.checkbox:hover {
+  background-color: var(--brown2);
+  accent-color: var(--brown2);
+}
+
+/* CopyClip */
+
+.copy-clip {
+  background: var(--grey1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.copy-clip button {
+  background: var(--grey1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+}
+
+.copy-clip img {
+  width: 16px;
+  height: 16px;
+}
+
+/* Icons */
+
+.logo-wrap {
+  display: flex;
+}
+
+.logo {
+  width: auto;
+  height: 36px;
+  margin-right: var(--m2);
+}
+
+.logo-text {
+  width: auto;
+  height: 36px;
+  margin-top: var(--m1);
+}
