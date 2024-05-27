@@ -42,8 +42,9 @@ export const SidebarDropdown = ({
                 <div className={`dropdown-menu ${isOpenDropdown ? 'open' : ''}`}>
                     <div className={styles.dropLine} />
                     <div className={styles.dropLinks}>
-                        {pathnames.map((item: SidebarDropdownItem) => (
+                        {pathnames?.map((item: SidebarDropdownItem, index: number) => (
                             <Link
+                                key={`${item.label}-${index}`}
                                 href={item.pathname}
                                 className={`droplink-wrap ${router.pathname == item.pathname ? "drop-active-link" : ""}`}
                             >

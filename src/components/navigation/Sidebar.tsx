@@ -9,10 +9,10 @@ import Home from "@/assets/icons/home.svg";
 import Settings from "@/assets/icons/settings.svg";
 import Support from "@/assets/icons/supportAndHelp.svg";
 import { useAppContext } from "@/context/AppContext";
-import { getUserProfile } from "@/api_request/settings";
 import styles from "./Sidebar.module.scss";
 import SidebarDropdown from "./SidebarDropdown";
 import SidebarLink from "./SidebarLink";
+import { fetchUserProfile } from "@/api_request/settings";
 
 const Sidebar = () => {
   const { updateUserData, setUpdateUserData } = useAppContext();
@@ -22,39 +22,34 @@ const Sidebar = () => {
   /* GET USER API CALL */
 
   useEffect(() => {
-    fetchUserProfile();
+    fetchUserProfile((response: any) => {
+      if (response) setUserData(response[0]);
+    }, () => {
+      setUserData(undefined);
+    });
   }, [router]);
 
   useEffect(() => {
     if (updateUserData) {
-      fetchUserProfile();
+      fetchUserProfile((response: any) => {
+        if (response) setUserData(response[0]);
+      }, (error: any) => {
+        console.error("Error fetching profile data:", error);
+        setUserData(undefined);
+      });
       setUpdateUserData(false);
     }
   }, [updateUserData]);
 
-  const fetchUserProfile = () => {
-    getUserProfile(
-      (response: any) => {
-        setUserData(response[0] || []);
-      },
-      (error: any) => {
-        console.error("Error fetching profile data:", error);
-        setUserData(undefined);
-      }
-    );
-  };
 
   return (
     <div className={styles.sidebarContainer}>
-
       <aside id="default-sidebar" aria-label="Sidebar" className={styles.sidebar}>
         <div className={styles.logoBox}>
           <Image src={LogoText} alt="logo" className={styles.mainLogo} />
         </div>
-
         <div className={styles.navBox}>
           <div className={styles.navLinks}>
-
             <div>
               <div className={styles.navTitle}>
                 <p className={styles.smallcapsDark}>main</p>
@@ -69,7 +64,6 @@ const Sidebar = () => {
                   </div>
                   <div>Dashboard</div>
                 </Link>
-
               </div>
             </div>
 
@@ -120,10 +114,7 @@ const Sidebar = () => {
                 />
               </div>
             </div>
-
-
           </div>
-
 
           <div>
             <Link

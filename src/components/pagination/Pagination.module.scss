@@ -1,0 +1,25 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--m6);
+
+    * {
+        font-family: "DMSansMedium", sans-serif;
+        font-size: 16px;
+    }
+
+    button {
+        margin: 0 5px;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 50%;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    button:disabled {
+        background-color: transparent;
+        cursor: not-allowed;
+    }
+}

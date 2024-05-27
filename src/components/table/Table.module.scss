@@ -1,0 +1,57 @@
+.tableContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+.tableRow {
+    height: 64px;
+
+    &:hover {
+        background-color: #f9fafa;
+        cursor: pointer;
+    }
+
+    &:not(:last-child) {
+        border-bottom: 0.5px solid hsl(215, 10%, 84%);
+    }
+}
+
+.tableCell {
+    text-align: left;
+    font-family: "DMSansRegular", sans-serif;
+    font-size: 14px;
+    width: 20%;
+
+    .cell {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.tableCenterCell {
+    text-align: center;
+    font-family: "DMSansRegular", sans-serif;
+    font-size: 14px;
+
+    .cell {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.tableImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    background-color: hsl(215, 10%, 96%);
+}

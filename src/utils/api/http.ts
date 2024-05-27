@@ -2,37 +2,6 @@ export const DEPLOYED_API_BASE_URL = process.env.NODE_ENV === 'development' ? 'h
 
 const juno = "xeAsoZwt"
 
-async function fetchWithTokenRenewal(url: string, options: any, errorCallback: Function) {
-    try {
-        const response = await fetch(url, options);
-        if (response.status === 401) {
-            // Intenta renovar el token de acceso
-            const refreshResponse = await fetch('token/refresh/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ refresh: localStorage.getItem('refresh') }),
-            });
-
-            if (refreshResponse.ok) {
-                const data = await refreshResponse.json();
-                localStorage.setItem('access', data.access);
-                options.headers['Authorization'] = `Bearer ${data.access}`;
-                return fetch(url, options);
-            } else {
-                window.location.href = '/login';
-                return;
-            }
-        }
-        return response;
-    } catch (error: any) {
-        errorCallback();
-        console.error(`Request to ${url} failed: ${error.message}`);
-        return error;
-    }
-}
-
 export async function loginPost<T>(endpoint: string, data: any, headers: any, errorCallback: Function): Promise<T> {
     const url: string = `${DEPLOYED_API_BASE_URL}/${endpoint}`;
 
@@ -54,7 +23,9 @@ export async function loginPost<T>(endpoint: string, data: any, headers: any, er
     }
 }
 
-export async function post<T>(url: string, data: any, headers: any, errorCallback: Function): Promise<T> {
+export async function post<T>(endpoint: string, data: any, headers: any, errorCallback: Function): Promise<T> {
+    const url: string = `${DEPLOYED_API_BASE_URL}/${endpoint}`;
+
     const options = {
         method: 'POST',
         body: JSON.stringify(data),
@@ -64,12 +35,14 @@ export async function post<T>(url: string, data: any, headers: any, errorCallbac
             ...headers
         },
     };
-    const response = await fetchWithTokenRenewal(url, options, errorCallback);
+    const response = await fetch(url, options);
     const responseData: T = await response.json();
     return responseData;
 }
 
-export async function get<T>(url: string, headers: any, errorCallback: Function): Promise<T> {
+export async function get(endpoint: string, headers: any) {
+    const url: string = `${DEPLOYED_API_BASE_URL}/${endpoint}`;
+
     const options = {
         method: 'GET',
         headers: {
@@ -78,12 +51,18 @@ export async function get<T>(url: string, headers: any, errorCallback: Function)
             ...headers
         },
     };
-    const response = await fetchWithTokenRenewal(url, options, errorCallback);
-    const responseData: T = await (response as Response).json();
-    return responseData;
+    const response = await fetch(url, options);
+
+    if (response.ok) {
+        return response.json();
+    }
+
+    return;
 }
 
-export async function put<T>(url: string, data: any, headers: any, errorCallback: Function): Promise<T> {
+export async function put<T>(endpoint: string, data: any, headers: any, errorCallback: Function): Promise<T> {
+    const url: string = `${DEPLOYED_API_BASE_URL}/${endpoint}`;
+
     const options = {
         method: 'PUT',
         body: JSON.stringify(data),
@@ -93,12 +72,14 @@ export async function put<T>(url: string, data: any, headers: any, errorCallback
             ...headers
         },
     };
-    const response = await fetchWithTokenRenewal(url, options, errorCallback);
+    const response = await fetch(url, options);
     const responseData: T = await response.json();
     return responseData;
 }
 
-export async function del<T>(url: string, headers: any, errorCallback: Function): Promise<T> {
+export async function del<T>(endpoint: string, headers: any, errorCallback: Function): Promise<T> {
+    const url: string = `${DEPLOYED_API_BASE_URL}/${endpoint}`;
+
     const options = {
         method: 'DELETE',
         headers: {
@@ -107,7 +88,7 @@ export async function del<T>(url: string, headers: any, errorCallback: Function)
             ...headers
         },
     };
-    const response = await fetchWithTokenRenewal(url, options, errorCallback);
+    const response = await fetch(url, options);
     const responseData: T = await response.json();
     return responseData;
 }

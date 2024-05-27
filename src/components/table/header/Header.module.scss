@@ -1,0 +1,53 @@
+.tableHeader {
+    text-align: left;
+    background-color: white;
+    height: 64px;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+}
+
+.tableHeaderRow {
+    text-align: left;
+    background-color: white;
+    height: 64px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tableHeaderButton {
+    border: none;
+    background-color: transparent;
+    width: 24px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tableHeaderCell {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: visible;
+
+    p {
+        @extend .text;
+    }
+}
+
+.tableHeaderCellCenter {
+    @extend .tableHeaderCell;
+    justify-content: center;
+
+    p {
+        @extend .text;
+    }
+}
+
+.text {
+    font-family: "DMSansRegular", sans-serif;
+    font-size: 14px;
+    padding: 0 0 0 8px;
+    margin: 0;
+    user-select: none;
+    font-weight: bold;
+}
