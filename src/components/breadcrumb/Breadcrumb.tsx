@@ -20,12 +20,12 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
             <ol role="list" className="row-items-center">
                 {items?.map((item, index) => (
                     <li key={`ind-${index}`} className="row-items-center">
-                        {item?.current || index === items?.length - 1 ? (
+                        {item?.current || index === items?.length - 1 && items?.length > 1 ? (
                             <span className="text-brown">
                                 {item?.label}
                             </span>
                         ) : (
-                            <a className="text-gray" href={item.link}>
+                            <a className={`${items?.length > 1 ? "text-gray" : "text-brown"}`} href={item.link}>
                                 {item?.label}
                             </a>
                         )}

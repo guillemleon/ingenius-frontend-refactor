@@ -1,18 +1,35 @@
 import { fetchDeals } from '@/api_request/deals';
 import Layout from '@/components/layout/layout'
+import Profile from '@/components/sidepanel/ProfileSidepanel/Profile';
+import Sidepanel from '@/components/sidepanel/Sidepanel';
 import Spinner from '@/components/spinner/Spinner';
 import Table from '@/components/table/Table';
 import { breadcrumbLinks, fields, images, tableFields } from '@/utils/page_config/deals';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 export const Deals = () => {
     const [data, setData] = useState<DealTableDataInterface[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+
+    const sidepanelSelectedData = useRef<number | undefined>();
 
     useEffect(() => {
         setLoading(true);
         fetchData();
     }, [])
+
+    const onReloadData = () => {
+        setLoading(true);
+        fetchData();
+    }
+
+    const openSidepanel = (id: number) => {
+        sidepanelSelectedData.current = id;
+        setIsOpen(true);
+    };
+
+    const closeSidepanel = () => setIsOpen(false);
 
     const fetchData = async () => {
         await fetchDeals((response: any) => {
@@ -44,8 +61,19 @@ export const Deals = () => {
                     fields={fields}
                     tableFields={tableFields}
                     images={images}
+                    openSidepanel={openSidepanel}
                 />
             }
+            <Sidepanel
+                isOpen={isOpen}
+                closeSidepanel={closeSidepanel}
+                href={{
+                    pathname: "/partnerships/deals/profile",
+                    query: { id: sidepanelSelectedData.current }
+                }}
+            >
+                <Profile type={'deals'} sidepanelSelectedData={sidepanelSelectedData.current} />
+            </Sidepanel>
         </Layout>
     )
 }

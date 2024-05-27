@@ -1,16 +1,37 @@
 import { fetchProjects } from '@/api_request/projects';
 import Layout from '@/components/layout/layout'
+import Profile from '@/components/sidepanel/ProfileSidepanel/Profile';
+import Sidepanel from '@/components/sidepanel/Sidepanel';
 import Spinner from '@/components/spinner/Spinner';
 import Table from '@/components/table/Table';
 import { breadcrumbLinks, fields, images, tableFields } from '@/utils/page_config/projects';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 export const Projects = () => {
     const [data, setData] = useState<ProjectTableDataInterface[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+
+    const sidepanelSelectedData = useRef<number | undefined>();
 
     useEffect(() => {
         setLoading(true);
+        fetchData();
+    }, [])
+
+    const onReloadData = () => {
+        setLoading(true);
+        fetchData();
+    }
+
+    const openSidepanel = (id: number) => {
+        sidepanelSelectedData.current = id;
+        setIsOpen(true);
+    };
+
+    const closeSidepanel = () => setIsOpen(false);
+
+    const fetchData = () => {
         fetchProjects((response: any) => {
             const projects: ProjectTableDataInterface[] = response?.map((project: any): ProjectTableDataInterface => {
                 return {
@@ -31,7 +52,7 @@ export const Projects = () => {
             setLoading(false);
             console.error("Error fetching projects data:", error);
         });
-    }, [])
+    }
 
     return (
         <Layout type='default' breadcrumbs={breadcrumbLinks} >
@@ -42,8 +63,19 @@ export const Projects = () => {
                     fields={fields}
                     tableFields={tableFields}
                     images={images}
+                    openSidepanel={openSidepanel}
                 />
             }
+            <Sidepanel
+                isOpen={isOpen}
+                closeSidepanel={closeSidepanel}
+                href={{
+                    pathname: "/partnerships/projects/profile",
+                    query: { id: sidepanelSelectedData.current }
+                }}
+            >
+                <Profile type={'campaigns'} sidepanelSelectedData={sidepanelSelectedData.current} />
+            </Sidepanel>
         </Layout>
     )
 }

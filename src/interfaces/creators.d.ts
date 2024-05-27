@@ -4,6 +4,7 @@ interface CreatorTableDataInterface {
     name: string;
     niche: string;
     email: string;
+    team: number;
     active_projects: number;
     active_projects_value: number;
 }

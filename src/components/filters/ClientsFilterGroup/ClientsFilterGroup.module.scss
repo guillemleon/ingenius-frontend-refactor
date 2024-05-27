@@ -1,0 +1,67 @@
+.filtersSearchContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.buttonGroup {
+    display: flex;
+    align-items: center;
+    gap: var(--m3);
+}
+
+.appButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    max-width: fit-content;
+    min-width: 100px;
+    height: 46px;
+    padding: 0 var(--m5);
+    border-radius: var(--r6);
+    gap: var(--m2);
+    background: var(--red);
+    font-family: "InterMedium";
+    font-size: 14px;
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: var(--salmon);
+    }
+}
+
+.appButtonCream {
+    @extend .appButton;
+    background-color: var(--cream);
+
+    &:hover {
+        filter: brightness(105%);
+    }
+}
+
+.inputFile {
+    display: none;
+}
+
+.reloadButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: var(--r6);
+    gap: var(--m2);
+    background: var(--orange);
+    font-family: "InterMedium";
+    font-size: 14px;
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        filter: brightness(115%);
+    }
+}

@@ -7,7 +7,7 @@ const Pagination = ({
     itemsPerPage,
     onPageChange,
 }: PaginationProps) => {
-    const totalPages = Math.ceil(data.length / itemsPerPage);
+    const totalPages = Math.ceil(data?.length / itemsPerPage);
 
     const nextPage = () => {
         if (currentPage < totalPages) onPageChange(currentPage + 1);
@@ -34,8 +34,8 @@ const Pagination = ({
                 onClick={nextPage}
                 disabled={
                     currentPage === totalPages ||
-                    data.length === 0 ||
-                    data.length < itemsPerPage
+                    data?.length === 0 ||
+                    data?.length < itemsPerPage
                 }
             >
                 &gt;

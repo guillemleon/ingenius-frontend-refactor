@@ -23,4 +23,12 @@ const images = [
     { fieldName: "profile_picture_url", index: 0 }
 ]
 
-export { breadcrumbLinks, fields, tableFields, images };
+const searchByFields = (item: any, search: string) => {
+    return (
+        item.name.toLowerCase().includes(search.toLowerCase()) ||
+        item.email.toLowerCase().includes(search.toLowerCase()) ||
+        item.website.toLowerCase().includes(search.toLowerCase())
+    );
+};
+
+export { breadcrumbLinks, fields, tableFields, images, searchByFields };

@@ -5,18 +5,21 @@ import Pagination from "../pagination/Pagination";
 
 const Table = ({
     data,
+    filteredData,
+    useFilteredData = false,
     fields,
     tableFields,
     images,
+    openSidepanel,
 }: TableProps) => {
     const itemsPerPage = 4;
     const [currentPage, setCurrentPage] = useState(1);
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const paginatedData = data.slice(startIndex, endIndex);
+    const paginatedData = !useFilteredData ? data?.slice(startIndex, endIndex) : filteredData?.slice(startIndex, endIndex);
 
     useEffect(() => {
-        paginatedData.slice(startIndex, endIndex);
+        paginatedData?.slice(startIndex, endIndex);
     }, [currentPage])
 
     const onPageChange = (page: number) => {
@@ -28,8 +31,12 @@ const Table = ({
             <table className={styles.table}>
                 <Header fields={fields} />
                 <tbody>
-                    {paginatedData?.length > 0 && paginatedData?.map((item) => (
-                        <tr key={item.id} className={styles.tableRow}>
+                    {paginatedData && paginatedData?.length > 0 && paginatedData?.map((item) => (
+                        <tr
+                            key={item.id}
+                            className={styles.tableRow}
+                            onClick={() => openSidepanel(item.id)}
+                        >
                             {tableFields?.map((field, index) => (
                                 <td key={`${field}-${index}`} className={styles[field.className]}>
                                     <div className={styles.cell}>
@@ -59,7 +66,7 @@ const Table = ({
             <Pagination
                 currentPage={currentPage}
                 itemsPerPage={itemsPerPage}
-                data={data}
+                data={(!useFilteredData) ? data : filteredData || []}
                 onPageChange={onPageChange}
             />
         </div>
