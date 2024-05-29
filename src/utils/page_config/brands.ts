@@ -23,6 +23,26 @@ const images = [
     { fieldName: "profile_picture_url", index: 0 }
 ]
 
+const profileConfig = {
+    image: {
+        fieldName: "profile_picture_url",
+    },
+    header: [
+        { title: "BRAND", fieldName: "name" },
+        { title: "CONTACT", fieldName: "email" },
+        { title: "WEBSITE", fieldName: "website" },
+    ],
+    info: [
+        { title: "NICHE", fieldName: "niche" },
+        { title: "ACTIVE CAMPAIGNS", fieldName: "active_campaigns" },
+        { title: "ACTIVE CAMPAIGNS VALUE", fieldName: "active_campaigns_value" }
+    ],
+    contact: {
+        title: "CONTACT BRAND",
+        fieldName: "email"
+    }
+}
+
 const searchByFields = (item: any, search: string) => {
     return (
         item.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -31,4 +51,4 @@ const searchByFields = (item: any, search: string) => {
     );
 };
 
-export { breadcrumbLinks, fields, tableFields, images, searchByFields };
+export { breadcrumbLinks, fields, tableFields, images, profileConfig, searchByFields };

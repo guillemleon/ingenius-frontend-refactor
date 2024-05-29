@@ -1,0 +1,135 @@
+.profileContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardContainer {
+    padding: var(--m3);
+    width: 100%;
+    min-width: 450px;
+    max-width: 450px;
+    border-radius: 10px;
+}
+
+.headCard {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 200px;
+    background-color: white;
+    align-items: center;
+    margin-bottom: var(--m1);
+}
+
+.profileInfo {
+    display: flex;
+    width: 100%;
+    height: 160px;
+    flex-direction: row;
+}
+
+.profileInfoImage {
+    width: 160px;
+    height: 160px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--gray1);
+
+    img {
+        min-width: 100%;
+        min-height: 100%;
+        object-fit: cover;
+    }
+}
+
+.profileInfoBox {
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.profileInfoWrap {
+    margin-bottom: 11px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.smallcaps {
+    font-family: "InterRegular";
+    color: var(--gray5);
+    font-size: 11px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.02rem;
+}
+
+.profileText {
+    font-family: "DMSansMedium";
+    margin-left: var(--m2);
+    font-size: 14px;
+}
+
+.cardText {
+    display: flex;
+    flex-direction: column;
+    gap: var(--m4);
+    height: auto;
+}
+
+.secButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: var(--r3);
+    color: black;
+    height: 42px;
+    font-family: "DMSansMedium";
+    font-size: 15px;
+    gap: var(--m2);
+    transition: all 0.3s ease;
+    background-color: var(--gray1);
+}
+
+.button {
+    @extend .secButton;
+    background: var(--linen);
+
+    &:hover {
+        background-color: var(--light-orange);
+    }
+
+    &:active {
+        background-color: var(--pink);
+        color: white;
+
+        img {
+            filter: unquote("invert()");
+        }
+    }
+}
+
+.secTag {
+    font-family: "DMSansSemiBold";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: var(--r4);
+    color: black;
+    min-height: var(--btn-h);
+    gap: var(--m2);
+    font-size: 16px;
+}

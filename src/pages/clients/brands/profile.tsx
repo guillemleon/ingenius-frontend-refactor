@@ -4,6 +4,8 @@ import { getCallByType } from "@/utils/api/getCallByType";
 import Spinner from "@/components/spinner/Spinner";
 import Layout from "@/components/layout/layout";
 import { useRouter } from "next/router";
+import ProfileComponent from "@/components/sidepanel/ProfileComponent/ProfileComponent";
+import { profileConfig } from "@/utils/page_config/brands";
 
 const BrandProfilePage = () => {
     const router = useRouter()
@@ -38,9 +40,10 @@ const BrandProfilePage = () => {
         ]}>
             {loading ?
                 <Spinner /> :
-                <div>
-                    {data?.name}
-                </div>
+                <ProfileComponent
+                    data={data}
+                    profileConfig={profileConfig}
+                />
             }
         </Layout>
     );

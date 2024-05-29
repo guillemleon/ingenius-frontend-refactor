@@ -5,7 +5,7 @@ import Profile from '@/components/sidepanel/ProfileSidepanel/Profile';
 import Sidepanel from '@/components/sidepanel/Sidepanel';
 import Spinner from '@/components/spinner/Spinner';
 import Table from '@/components/table/Table';
-import { breadcrumbLinks, fields, images, searchByFields, tableFields } from '@/utils/page_config/brands';
+import { breadcrumbLinks, fields, images, profileConfig, searchByFields, tableFields } from '@/utils/page_config/brands';
 import React, { useEffect, useRef, useState } from 'react'
 
 export const Brands = () => {
@@ -86,7 +86,11 @@ export const Brands = () => {
                     query: { id: sidepanelSelectedData.current }
                 }}
             >
-                <Profile type={'brands'} sidepanelSelectedData={sidepanelSelectedData.current} />
+                <Profile
+                    type={'brands'}
+                    sidepanelSelectedData={sidepanelSelectedData.current}
+                    profileConfig={profileConfig}
+                />
             </Sidepanel>
         </Layout>
     )

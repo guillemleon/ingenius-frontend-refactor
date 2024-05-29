@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 import styles from "./Profile.module.scss"
 import { getCallByType } from "@/utils/api/getCallByType";
 import Spinner from "@/components/spinner/Spinner";
+import ProfileComponent from "../ProfileComponent/ProfileComponent";
 
 const Profile = ({
     type,
-    sidepanelSelectedData
+    sidepanelSelectedData,
+    profileConfig
 }: {
     type: string;
-    sidepanelSelectedData: number | undefined
+    sidepanelSelectedData: number | undefined,
+    profileConfig: any
 }) => {
     const [data, setData] = useState<any>(null);
     const [loading, setLoading] = useState<boolean>(true);
@@ -41,7 +44,11 @@ const Profile = ({
             {loading ?
                 <Spinner /> :
                 <div>
-                    {data?.name}
+                    <ProfileComponent
+                        data={data}
+                        profileConfig={profileConfig}
+                        isEditable={true}
+                    />
                 </div>
             }
         </div>

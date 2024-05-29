@@ -5,7 +5,7 @@ import Profile from '@/components/sidepanel/ProfileSidepanel/Profile';
 import Sidepanel from '@/components/sidepanel/Sidepanel';
 import Spinner from '@/components/spinner/Spinner';
 import Table from '@/components/table/Table';
-import { breadcrumbLinks, fields, images, searchByFields, tableFields } from '@/utils/page_config/creators';
+import { breadcrumbLinks, fields, images, profileConfig, searchByFields, tableFields } from '@/utils/page_config/creators';
 import React, { useEffect, useRef, useState } from 'react'
 
 export const Creators = () => {
@@ -85,7 +85,11 @@ export const Creators = () => {
                     query: { id: sidepanelSelectedData.current }
                 }}
             >
-                <Profile type={'creators'} sidepanelSelectedData={sidepanelSelectedData.current} />
+                <Profile
+                    type={'creators'}
+                    sidepanelSelectedData={sidepanelSelectedData.current}
+                    profileConfig={profileConfig}
+                />
             </Sidepanel>
         </Layout>
     )
